@@ -6,21 +6,23 @@ export class CatsPage {
   readonly header: Locator;
 
   readonly addCatButton: Locator;
-  readonly removeCaButton: Locator;
+  readonly removeCatButton: Locator;
   readonly apocalypseButton: Locator;
 
   readonly catCards: Locator;
 
+  readonly catCounter: Locator;
+
   constructor(page: Page) {
     this.page = page;
     this.navigationBar = "nav";
-    this.header = page.getByRole("heading", { name: "Tlačítka" });
+    this.header = page.getByRole("heading", { name: "Přidávání a odebírání elementů" });
 
-    // OH! Fill this! Check the HTML and fill the selectors. Use whatever selector you want.
-    this.addCatButton;
-    this.removeCaButton;
-    this.apocalypseButton;
-    this.catCards;
+    this.addCatButton = page.getByRole('button', { name: 'Přidej kočku' });
+    this.removeCatButton = page.locator('[id="removeItem"]');
+    this.apocalypseButton = page.getByRole('button', { name: 'Apokalypsa' });
+    this.catCards = page.getByAltText("Kočka");
+    this.catCounter = page.locator('[id="counter"]');
   }
 
   async visit() {
